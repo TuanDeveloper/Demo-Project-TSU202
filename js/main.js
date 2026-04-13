@@ -2,11 +2,11 @@
 let categories = JSON.parse(localStorage.getItem("categories")); // null
 if (!categories) {
     categories = [
-        { id: 1, productName: "Quần Áo", status: "Đang hoạt động" },
-        { id: 2, productName: "Kính mắt", status: "Đang hoạt động" },
-        { id: 3, productName: "Điện tử", status: "Ngừng hoạt động" },
-        { id: 4, productName: "Hoa quả", status: "Đang hoạt động" },
-        { id: 5, productName: "Giày dép", status: "Ngừng hoạt động" },
+        { id: 1, productName: "Quần Áo", status: "Đang hoạt động", img: "../img/anh1.png" },
+        { id: 2, productName: "Kính mắt", status: "Đang hoạt động", img: "../img/anh2.png" },
+        { id: 3, productName: "Điện tử", status: "Ngừng hoạt động", img: "../img/anh3.png" },
+        { id: 4, productName: "Hoa quả", status: "Đang hoạt động", img: "../img/anh4.png" },
+        { id: 5, productName: "Giày dép", status: "Ngừng hoạt động", img: "../img/anh1.png" },
     ];
 }
 localStorage.setItem("categories", JSON.stringify(categories));
@@ -21,6 +21,9 @@ function renderCategories(arr) {
                 <td>${c.id}</td>
                 <td>${c.productName}</td>
                 <td>${c.status}</td>
+                <td>
+                    <img src="${c.img}" alt="">
+                </td>
                 <td>
                     <button>Sua</button>
                     <button onclick="handleDelete(${c.id})">Xoa</button>
@@ -39,6 +42,15 @@ formAddProduct.addEventListener("submit", (event) => {
     let productIdInput = Number(formAddProduct.productId.value.trim());
     let productNameInput = formAddProduct.productName.value.trim();
 
+    let checkId = categories.some((c) => {
+        return c.id === productIdInput;
+    })
+    console.log(checkId);
+
+    if (checkId) {
+        alert("Khong duoc nhap id trung!");
+        return;
+    }
     console.log(productIdInput, productNameInput);
     let newCategory = {
         id: productIdInput,
@@ -64,7 +76,7 @@ function handleDelete(id) {
 let inputSearch = document.getElementById("input-search");
 inputSearch.addEventListener("input", (event) => {
     let value = inputSearch.value.trim();
-    let newArr = categories.filter( (c) => {
+    let newArr = categories.filter((c) => {
         return c.productName.includes(value);
     });
     console.log(newArr);
