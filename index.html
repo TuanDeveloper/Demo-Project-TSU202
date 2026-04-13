@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    Quan ly
+    <form action="" id="form-addProduct">
+        <input type="text" placeholder="Ma danh muc" name="productId">
+        <input type="text" placeholder="Ten danh muc" name="productName">
+        <button type="submit">Them san pham</button>
+    </form>
+    <input type="text" placeholder="Tim kiem san pham" id="input-search">
+    <table border="1" cellspacing="0" cellpadding="20">
+        <thead>
+            <tr>
+                <th>Ma danh muc</th>
+                <th>Ten danh muc</th>
+                <th>Trang Thai</th>
+                <th>Chuc nang</th>
+            </tr>
+        </thead>
+        <tbody id="table-categories">
+            <tr>
+                <td>P001</td>
+                <td>Quan Ao</td>
+                <td>Ngung hoat dong</td>
+                <td>
+                    <button>Sua</button>
+                    <button>Xoa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <button id="btn-logout">Logout</button>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
